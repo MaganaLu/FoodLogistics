@@ -1,0 +1,9 @@
+{
+  "devToolsPort": 19003,
+  "expoServerPort": 19004,
+  "packagerPort": 19005,
+  "packagerPid": 21456,
+  "expoServerNgrokUrl": "https://wp-bri.anonymous.testingproject.exp.direct",
+  "packagerNgrokUrl": "https://packager.wp-bri.anonymous.testingproject.exp.direct",
+  "ngrokPid": 17440
+}
