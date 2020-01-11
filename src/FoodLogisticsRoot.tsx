@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import FoodLogisticsBumper from './default/FoodLogisticsBumper';
+import FoodLogisticsFrame from './default/FoodLogisticsFrame';
 
 
 // * tsx types
@@ -33,8 +34,8 @@ export default class FoodLogisticsApp extends React.Component {
 		else {
 			return (
 				<View style = {styles.container}>
-					<Text>Hello World!</Text>
-				</View>
+					<FoodLogisticsFrame isLoggedIn= {false} />
+				</View> 
 				
 			)
 		}
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
-		alignItems: 'center',
+		alignItems: 'stretch',
 		justifyContent: 'center',
 	},
 });
