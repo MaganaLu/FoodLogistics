@@ -11,32 +11,32 @@ import Map from './FoodLogisticsBody_Map';
 import Account from './FoodLogisticsBody_Account';
 
 type Props = {
-    page: number;
+    page: 1 | 2 | 3 | 4;
 }
 
 export default class AppBody extends React.Component<Props> {
 
     render () {
 
-        if (this.props.page == 0) {
+        if (this.props.page == 1) {
             return (
                 <Home/>
             )
         }
 
-        else if (this.props.page == 1) {
+        else if (this.props.page == 2) {
             return (
                 <Activity/>
             )
         }
 
-        else if (this.props.page == 2) {
+        else if (this.props.page == 3) {
             return (
                 <Map/>
             )
         }
 
-        else if (this.props.page == 3) {
+        else if (this.props.page == 4) {
             return (
                 <Account/>
             )

@@ -1,28 +1,34 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 
 import AppBody from '../body/FoodLogisticsBody';
+
+const MainButton = props => 
+    <Button  
+        buttonStyle={{ flexDirection: 'column', justifyContent: 'space-between' }} 
+        type= 'clear' {...props}
+        titleStyle = {{color: 'black', fontSize: 15}}
+    />
 
 
 type Props = {
     isLoggedIn: true | false;
-    page: number;
 }
 
 type State = {
     isLoggedIn: true | false;
-    page: number;
+    page: 1 | 2 | 3 | 4;
 }
 
 export default class FoodLogisticsFrame extends React.Component<Props, State> {
 
     state: State = {
         isLoggedIn: false,
-        page: 0
+        page: 1
     };
-    
+
     componentDidMount() {
         this.setState({isLoggedIn: this.props.isLoggedIn})
     }
@@ -35,9 +41,8 @@ export default class FoodLogisticsFrame extends React.Component<Props, State> {
                 <View style = {styles.header}>
 
                     <View style = {styles.header_Menu}>
-                        <Button
+                        <MainButton
                            icon = {<Ionicons name='ios-menu' size = {50}/>}
-                           type = "clear"
                         />
                     </View>
 
@@ -46,9 +51,8 @@ export default class FoodLogisticsFrame extends React.Component<Props, State> {
                     </View>
 
                     <View style = {styles.header_Settings}>
-                        <Button
+                        <MainButton
                             icon = {<Ionicons name='ios-settings' size = {50}/>}
-                            type = "clear"
                         />
                     </View>
 
@@ -61,21 +65,36 @@ export default class FoodLogisticsFrame extends React.Component<Props, State> {
                 <View style = {styles.footer}>
 
                     <View style = {styles.footer_Button}>
-                        <Button onPress = {() => {this.setState({page: 0})}} title = 'B1'/>
+                        <MainButton 
+                            onPress = {() => {this.setState({page: 1})}} 
+                            icon = {<AntDesign name='home' size = {20}/>}
+                            title = 'Main'
+                        />
                     </View>
 
                     <View style = {styles.footer_Button}>
-                        <Button onPress = {() => {this.setState({page: 1})}} title = 'B2'/>
+                        <MainButton 
+                            onPress = {() => {this.setState({page: 2})}} 
+                            icon = {<Feather name='activity' size = {20}/>}
+                            title = 'Activity'
+                        />
                     </View>
 
                     <View style = {styles.footer_Button}>
-                        <Button onPress = {() => {this.setState({page: 2})}} title = 'B3'/>
+                        <MainButton 
+                            onPress = {() => {this.setState({page: 3})}} 
+                            icon = {<FontAwesome name='map-o' size = {20}/>}
+                            title = 'Map'
+                        />
                     </View>
 
                     <View style = {styles.footer_Button}>
-                        <Button onPress = {() => {this.setState({page: 3})}} title = 'B4'/>
+                        <MainButton 
+                            onPress = {() => {this.setState({page: 4})}} 
+                            icon = {<AntDesign name='user' size = {20}/>}
+                            title = 'Account'
+                        />
                     </View>
-
                 </View>
             </View>
         );

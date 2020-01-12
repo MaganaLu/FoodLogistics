@@ -6,7 +6,9 @@ import FoodLogisticsFrame from './default/FoodLogisticsFrame';
 
 
 // * tsx types
-type Props = {};
+type Props = {
+	isLoggedIn: true | false;
+};
 type State = {
     isLoading: true | false;
 };
@@ -34,7 +36,7 @@ export default class FoodLogisticsApp extends React.Component {
 		else {
 			return (
 				<View style = {styles.container}>
-					<FoodLogisticsFrame isLoggedIn= {false} />
+					<FoodLogisticsFrame isLoggedIn = {false} />
 				</View> 
 				
 			)
