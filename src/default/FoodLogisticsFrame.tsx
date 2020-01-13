@@ -95,6 +95,7 @@ export default class FoodLogisticsFrame extends React.Component<Props, State> {
                             title = 'Account'
                         />
                     </View>
+
                 </View>
             </View>
         );
