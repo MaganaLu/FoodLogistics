@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import Config from '../../config.json';
 
 var data;
 
@@ -21,17 +22,18 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        return fetch('http://localhost:3000', {
+        return fetch(Config.baseUrl, {
             method: 'GET',
             headers: {
-              host: 'http://localhost:3000'
+              host: Config.baseUrl
             },
           })
-            .then(response => {
-                console.log(response.json)
+            .then(res => res.json())
+            .then(resJson => {
+                console.log(resJson);
                 this.setState({
                     isLoading: false,
-                    data: response
+                    data: resJson.message
                 });
             })
             .catch (error => {
@@ -58,7 +60,7 @@ export default class Home extends React.Component {
 
         else {
             return (
-                <Text>{this.state.data[0]}</Text>
+                <Text>{this.state.data}</Text>
             )
         }
     }
