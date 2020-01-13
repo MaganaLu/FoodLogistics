@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import Home from './FoodLogisticsBody_Home';
 import Activity from './FoodLogisticsBody_Activity';
@@ -48,5 +48,4 @@ export default class AppBody extends React.Component<Props> {
             )
         }
     }   
-
 }
