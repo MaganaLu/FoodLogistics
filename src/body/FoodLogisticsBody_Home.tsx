@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import Config from '../../config.json';
 
 var data;
 
@@ -21,10 +22,10 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.0.2.2:3000', {
+        return fetch(Config.baseUrl, {
             method: 'GET',
             headers: {
-              host: 'http://10.0.2.2:3000'
+              host: Config.baseUrl
             },
           })
             .then(res => res.json())
