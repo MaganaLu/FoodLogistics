@@ -5,24 +5,22 @@ import Header from "./Frames/Frame_Header"
 import Body from "./Frames/Frame_Body"
 import Footer from "./Frames/Frame_Footer"
 
-type Page = 1 | 2 | 3 | 4;
+type Page = "main" | "activity" | "map" | "account";
 
 type Props = {
 	isLoggedIn: true | false;
-	page: Page
-	onPageChange: (page: Page) => void;
 };
 
 type State = {
   isLoggedIn: true | false;
-  page: Page
+  page: Page;
 };
 
 export default class FoodLogisticsFrame extends React.Component<Props, State> 
 {
   state: State = {
     isLoggedIn: false,
-    page: 1
+    page: "main"
   };
 
   render() {

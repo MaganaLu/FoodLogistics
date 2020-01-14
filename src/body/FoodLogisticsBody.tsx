@@ -10,33 +10,35 @@ import Activity from './FoodLogisticsBody_Activity';
 import Map from './FoodLogisticsBody_Map';
 import Account from './FoodLogisticsBody_Account';
 
+type Page = "main" | "activity" | "map" | "account";
+
 type Props = {
-    page: 1 | 2 | 3 | 4;
+    page: Page;
 }
 
 export default class AppBody extends React.Component<Props> {
 
     render () {
 
-        if (this.props.page == 1) {
+        if (this.props.page == "main") {
             return (
                 <Home/>
             )
         }
 
-        else if (this.props.page == 2) {
+        else if (this.props.page == "activity") {
             return (
                 <Activity/>
             )
         }
 
-        else if (this.props.page == 3) {
+        else if (this.props.page == "map") {
             return (
                 <Map/>
             )
         }
 
-        else if (this.props.page == 4) {
+        else if (this.props.page == "account") {
             return (
                 <Account/>
             )
