@@ -30,7 +30,6 @@ export default class Home extends React.Component {
           })
             .then(res => res.json())
             .then(resJson => {
-                console.log(resJson);
                 this.setState({
                     isLoading: false,
                     data: resJson.message
