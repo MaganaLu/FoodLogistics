@@ -19,17 +19,19 @@ type State = {
 export default class FoodLogisticsFrame extends React.Component<Props, State> 
 {
   state: State = {
-    isLoggedIn: false,
+    isLoggedIn: this.props.isLoggedIn,
     page: "main"
-  };
+	};
 
   render() {
     return (
       <View style={styles.container}>
         
 				<Header/>
-
-        <Body page = {this.state.page} isLoggedIn = {this.state.isLoggedIn} />
+        
+        <View style={styles.body}>
+          <Body page = {this.state.page} isLoggedIn = {this.state.isLoggedIn} />
+        </View>
 
 				<Footer page = {this.state.page} isLoggedIn = {this.state.isLoggedIn} onPageChange = {this._onPageChange}/>
 
