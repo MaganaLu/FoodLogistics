@@ -1,84 +1,59 @@
-import React from "react";
-import { StyleSheet, Text, View, AsyncStorage } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import FoodLogisticsBumper from "./default/FoodLogisticsBumper";
-import FoodLogisticsFrame from "./default/FoodLogisticsFrame";
-import { getUID, isLoggedIn } from "../storage/AsyncStorage/asyncDB";
+import FoodLogisticsBumper from './default/FoodLogisticsBumper';
+import FoodLogisticsFrame from './default/FoodLogisticsFrame';
 
-type UserID = string | null;
-
-type LocalStorage = {
-  uID: string | null;
-};
 
 // * tsx types
+type Props = {
+	isLoggedIn: true | false;
+};
 type State = {
-  isLoading: boolean;
-  isLoggedIn: boolean;
-  user: LocalStorage | null;
+    isLoading: true | false;
 };
 
 export default class FoodLogisticsApp extends React.Component {
-  state: State = {
-    isLoading: true,
-    isLoggedIn: false,
-    user: null
-  };
 
-  async componentDidMount(): Promise<void> {
-    await this._initUser();
-    setTimeout(() => this.setState({ isLoading: false }), 3000);
-  }
+	state: State = {
+		isLoading: true
+	}
 
-  render() {
-    console.log('log (Root):', this.state.isLoggedIn)
-    if (this.state.isLoading) {
-      return <FoodLogisticsBumper />;
-    } else {
-      return (
-        <View style={styles.container}>
-          <FoodLogisticsFrame
-            uID={this.state.user.uID}
-            isLoggedIn={this.state.isLoggedIn}
-            onUserStatusChange={this._onUserStatusChange}
-          />
-        </View>
-      );
-    }
-  }
+	// Check local storage to see if they are logged into an acct
+	componentDidMount() {
+		setTimeout(() => (this.setState({isLoading: false})), 3000);
+		this._initFromLocalStorage();
+	}
 
-  // * Returns uID if the user is logged in
-  _initUser = async (): Promise<void> => {
-    let status: boolean = false;
-    let store: LocalStorage = {
-      uID: null
-    };
-    try {
-      status = await isLoggedIn();
-      if (status) {
-        try {
-          store.uID = await getUID();
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    } catch (err) {
-      console.log(err);
-    }
-    this.setState({ isLoggedIn: status, user: store });
-  };
+	render () {
 
-  // * refresh user status
-  _onUserStatusChange = async (): Promise<void> => {
-    await this._initUser();
-  };
-}
+		if (this.state.isLoading){
+			return (
+				<FoodLogisticsBumper/>
+			)
+		}
+
+		else {
+			return (
+				<View style = {styles.container}>
+					<FoodLogisticsFrame isLoggedIn = {false} />
+				</View> 
+				
+			)
+		}
+	}
+
+	// TODO: Implement local storage
+	_initFromLocalStorage = async () => {
+		
+	};
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "stretch",
-    justifyContent: "center"
-  }
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'stretch',
+		justifyContent: 'center',
+	},
 });
