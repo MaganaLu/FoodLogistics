@@ -5,6 +5,10 @@ import Config from '../../config.json';
 
 var data;
 
+type Props = {
+    uID: string | null;
+}
+
 type State = {
     isLoading: true | false;
     err: true | false;
@@ -12,7 +16,7 @@ type State = {
     data: any;
 }
 
-export default class Home extends React.Component {
+export default class Home extends React.Component<Props> {
 
     state: State = {
         isLoading: true,
@@ -47,7 +51,7 @@ export default class Home extends React.Component {
 
         if (this.state.isLoading) {
             return (
-                <ActivityIndicator/>
+                <Text>{this.props.uID}</Text>
             )
         }
 
