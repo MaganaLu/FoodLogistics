@@ -20,16 +20,7 @@ type Props = {
   onPageChange: (page: Page) => void;
 };
 
-type State = {
-  isLoggedIn: true | false;
-  page: Page;
-};
-
-export default class Frame_Footer extends React.Component<Props, State> {
-  state: State = {
-    isLoggedIn: this.props.isLoggedIn,
-    page: this.props.page
-  };
+export default class Frame_Footer extends React.Component<Props> {
 
   render() {
     return (
@@ -37,7 +28,6 @@ export default class Frame_Footer extends React.Component<Props, State> {
         <View style={styles.footer_Button}>
           <MainButton
             onPress={() => {
-              this.setState({ page: "main" });
               this.props.onPageChange("main");
             }}
             icon={<AntDesign name="home" size={20} />}
@@ -48,7 +38,6 @@ export default class Frame_Footer extends React.Component<Props, State> {
         <View style={styles.footer_Button}>
           <MainButton
             onPress={() => {
-							this.setState({ page: "activity" });
 							this.props.onPageChange("activity");
             }}
             icon={<Feather name="activity" size={20} />}
@@ -59,7 +48,6 @@ export default class Frame_Footer extends React.Component<Props, State> {
         <View style={styles.footer_Button}>
           <MainButton
             onPress={() => {
-							this.setState({ page: "map" });
 							this.props.onPageChange("map");
             }}
             icon={<FontAwesome name="map-o" size={20} />}
@@ -70,7 +58,6 @@ export default class Frame_Footer extends React.Component<Props, State> {
         <View style={styles.footer_Button}>
           <MainButton
             onPress={() => {
-							this.setState({ page: "account" });
 							this.props.onPageChange("account");
             }}
             icon={<AntDesign name="user" size={20} />}

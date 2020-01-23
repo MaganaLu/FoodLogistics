@@ -5,35 +5,43 @@ import Header from "./Frames/Frame_Header"
 import Body from "./Frames/Frame_Body"
 import Footer from "./Frames/Frame_Footer"
 
+type UserID = string | null;
+
 type Page = "main" | "activity" | "map" | "account";
 
 type Props = {
-	isLoggedIn: true | false;
+  isLoggedIn: boolean;
+  uID: UserID;
+  onUserStatusChange: () => Promise<void>;
 };
 
 type State = {
-  isLoggedIn: true | false;
   page: Page;
 };
 
 export default class FoodLogisticsFrame extends React.Component<Props, State> 
 {
   state: State = {
-    isLoggedIn: this.props.isLoggedIn,
     page: "main"
-	};
+  };
+
 
   render() {
+    console.log('log (Frame):', this.props.isLoggedIn)
     return (
       <View style={styles.container}>
         
 				<Header/>
         
         <View style={styles.body}>
-          <Body page = {this.state.page} isLoggedIn = {this.state.isLoggedIn} />
+          <Body 
+            page = {this.state.page} 
+            isLoggedIn = {this.props.isLoggedIn} 
+            uID = {this.props.uID} 
+            onUserStatusChange = {this.props.onUserStatusChange} />
         </View>
 
-				<Footer page = {this.state.page} isLoggedIn = {this.state.isLoggedIn} onPageChange = {this._onPageChange}/>
+				<Footer page = {this.state.page} isLoggedIn = {this.props.isLoggedIn} onPageChange = {this._onPageChange}/>
 
 			</View>
 		);			
