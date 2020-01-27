@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 export default class Activity extends React.Component {
     render (){
         return (
-            <Feather name='activity' size = {50}/>
+            <Feather name='activity' size = {70}/>
         )
     }
 }
